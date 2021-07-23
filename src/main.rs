@@ -16,8 +16,8 @@ async fn index() -> Html<String> {
     )
 }
 
-#[get("/idiology")]
-async fn idiology() -> Html<String> {
+#[get("/ideology")]
+async fn ideology() -> Html<String> {
     let prefixes = [
         "Monarchic",
         "Anarcho",
@@ -55,7 +55,7 @@ async fn idiology() -> Html<String> {
         "Cultural",
         "Classical",
     ];
-    let idiologys = [
+    let ideologys = [
         "Communism",
         "Socialism",
         "Monarchism",
@@ -88,11 +88,11 @@ async fn idiology() -> Html<String> {
     let idiology = format!(
         "{}-{}",
         prefixes.choose(&mut rng).unwrap(),
-        idiologys.choose(&mut rng).unwrap()
+        ideologys.choose(&mut rng).unwrap()
     );
 
     Html(
-        include_bytes!("../public/idiology.html")
+        include_bytes!("../public/ideology.html")
             .to_vec()
             .iter()
             .map(|&i| i as char)
@@ -103,5 +103,5 @@ async fn idiology() -> Html<String> {
 
 #[launch]
 async fn rocket() -> _ {
-    rocket::build().mount("/", routes![index, idiology])
+    rocket::build().mount("/", routes![index, ideology])
 }
