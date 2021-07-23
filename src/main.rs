@@ -81,6 +81,7 @@ async fn ideology() -> Html<String> {
         "Stalanism",
         "Libertarianism",
         "Theocracy",
+        "Kevelinism",
         "Liberalism",
     ];
 
