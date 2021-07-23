@@ -54,6 +54,7 @@ async fn ideology() -> Html<String> {
         "Liberal",
         "Cultural",
         "Classical",
+        "Techno",
     ];
     let ideologys = [
         "Communism",
@@ -87,7 +88,8 @@ async fn ideology() -> Html<String> {
 
     let mut rng = thread_rng();
     let idiology = format!(
-        "{}-{}",
+        "{}-{}-{}",
+        prefixes.choose(&mut rng).unwrap(),
         prefixes.choose(&mut rng).unwrap(),
         ideologys.choose(&mut rng).unwrap()
     );
