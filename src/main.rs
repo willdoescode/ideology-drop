@@ -7,13 +7,7 @@ extern crate rocket;
 
 #[get("/")]
 async fn index() -> Html<String> {
-    Html(
-        include_bytes!("../public/index.html")
-            .to_vec()
-            .iter()
-            .map(|&i| i as char)
-            .collect::<String>(),
-    )
+    Html(std::fs::read_to_string("public/index.html").unwrap())
 }
 
 #[get("/ideology")]
@@ -94,14 +88,7 @@ async fn ideology() -> Html<String> {
         ideologys.choose(&mut rng).unwrap()
     );
 
-    Html(
-        include_bytes!("../public/ideology.html")
-            .to_vec()
-            .iter()
-            .map(|&i| i as char)
-            .collect::<String>()
-            .replace("Idiology", &idiology),
-    )
+    Html(std::fs::read_to_string("public/ideology.html").unwrap().replace("Idiology", &idiology))
 }
 
 #[launch]
